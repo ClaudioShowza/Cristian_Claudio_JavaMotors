@@ -1,6 +1,6 @@
 package motorveiculoteste;
 
-public class Veiculo {
+public abstract class Veiculo {
     private int qtdRodas;
     private float velocMax;
     private String placa;
@@ -23,6 +23,7 @@ public class Veiculo {
         this.motor.setQtdPist(qtdPist);
         this.motor.setPotencia(potencia);
     }
+    
 
     public int getQtdRodas() {
         return qtdRodas;
@@ -78,5 +79,31 @@ public class Veiculo {
 
     public void setMotor(Motor motor) {
         this.motor = motor;
+    
+    }
+    
+    public abstract float calcVel(float velocMax);
+}
+
+class VeiculoPasseio extends Veiculo {
+    private int qtdPassageiros;
+
+    public VeiculoPasseio() {
+        super(); 
+        this.qtdPassageiros = 0;
+    }
+
+    public int getQtdPassageiros() {
+        return qtdPassageiros;
+    }
+
+    public void setQtdPassageiros(int qtdPassageiros) {
+        this.qtdPassageiros = qtdPassageiros;
+    }
+
+    @Override
+    public float calcVel(float velocMax) {
+
+        return velocMax * 1000 / 3600; 
     }
 }
